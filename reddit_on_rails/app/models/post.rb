@@ -22,7 +22,7 @@ class Post < ApplicationRecord
         foreign_key: :author_id,
         class_name: :User
 
-    belongs_to :post_sub,
+    has_many :post_subs,
         foreign_key: :post_id,
         class_name: :PostSub
     

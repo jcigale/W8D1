@@ -28,11 +28,14 @@ class SubsController < ApplicationController
     end
 
     def create
-        @sub = Sub.new(sub_params)
-        @sub.moderator_id = @current_user.id
+        # @sub = Sub.new(sub_params)
+        @sub = current_user.subs.new(sub_params)
+        # @sub.moderator_id = current_user
         unless @sub.save
             flash.now[:errors] = @sub.errors.full_messages
             render :new
+        else
+            redirect_to subs_url
         end
     end
 

@@ -11,6 +11,7 @@
 #
 class Sub < ApplicationRecord
     validates :title, presence: true, uniqueness: true
+    validates :description, presence: true
 
     belongs_to :moderator,
         foreign_key: :moderator_id,
@@ -20,8 +21,11 @@ class Sub < ApplicationRecord
         foreign_key: :sub_id,
         class_name: :Post
 
-    belongs_to :post_sub,
+    has_many :post_subs,
         foreign_key: :sub_id,
         class_name: :PostSub
+    # has_many :post_subs,
+    #     through: :posts,
+    #     source: :subs
     
 end

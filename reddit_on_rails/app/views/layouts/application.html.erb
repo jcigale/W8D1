@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <% if flash[:errors] %>
+      <p><%= flash[:errors].join(", ") %></p>
+    <% end %>
+
+    <%# <% if signed_in? %> %>
+      <%# <nav> %>
+        <%# <a class="button" href="<%=  %>"> %>
+      <%# </nav> %>
+    <%# <% end %> %>
+
     <%= yield %>
   </body>
 </html>

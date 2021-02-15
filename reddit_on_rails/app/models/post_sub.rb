@@ -9,14 +9,15 @@
 #  updated_at :datetime         not null
 #
 class PostSub < ApplicationRecord
-    validates :sub_id, uniqueness: {scope: :post_id}
+    #validates :sub_id, uniqueness: {scope: :post_id}
 
-    has_many :posts,
+    belongs_to :post,
         foreign_key: :post_id,
-        class_name: :Post
+        class_name: :PostSub
 
-    has_many :subs,
+    belongs_to :sub,
         foreign_key: :sub_id,
         class_name: :Sub
+    
 
 end
