@@ -1,0 +1,8 @@
+<h1><%= @user.username %>'s Fuggin Page</h1>
+
+<h4><%= @user.username %> moderates these subs</h4>
+    <ul>
+        <%@user.subs.each do |sub|%>
+        <li><a href="<%=subs_url(sub)%>"><%= sub.title %></a></li>
+        <% end %>
+    </ul>

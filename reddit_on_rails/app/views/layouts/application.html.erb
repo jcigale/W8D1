@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -14,11 +15,17 @@
       <p><%= flash[:errors].join(", ") %></p>
     <% end %>
 
-    <%# <% if signed_in? %> %>
-      <%# <nav> %>
-        <%# <a class="button" href="<%=  %>"> %>
-      <%# </nav> %>
-    <%# <% end %> %>
+    <% if signed_in? %>
+      <nav>
+        <p><%= current_user.username %></p>
+        <a class="button" href="<%= subs_url %>">GO HOME</a>
+        <form action="<%= session_url %>" method="POST">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <button type="submit">SIGN OUT</button>
+        </form>
+      </nav>
+    <% end %>
 
     <%= yield %>
   </body>
